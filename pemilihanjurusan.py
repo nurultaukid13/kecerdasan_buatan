@@ -238,6 +238,36 @@ def bakat(nilai, minat):
                 bakat ="tek_pangan"
             else:
                 bakat = "ulang"
+
+    elif nilai == "ekonomi":
+        if "bisnis" in minat and "administrasi" in minat:
+            if input("Apakah kamu memiliki keterampilan kepemimpinan dan manajemen yang kuat?? (ya/tidak) ") == "ya":
+                bakat ="feb"
+            elif input("Apakah kamu memiliki bakat dalam mengelola keuangan dan membuat laporan keuangan yang akurat? (ya/tidak) ") == "ya":
+                bakat ="feb"
+            elif input("Apakah kamu memiliki kemampuan dalam mengorganisir tugas dan pekerjaan dengan baik? (ya/tidak)") == "ya":
+                bakat ="fisip"
+            elif input("Apakah kamu memiliki bakat dalam hal manajemen keuangan publik dan pengelolaan anggaran? (ya/tidak)") == "ya":
+                bakat ="fisip"
+            else:
+                bakat = "ulang"
+        
+        elif "bisnis" in minat and "administrasi" not in minat:
+            if input("Apakah kamu memiliki keterampilan kepemimpinan dan manajemen yang kuat?? (ya/tidak) ") == "ya":
+                bakat ="feb"
+            elif input("Apakah kamu memiliki bakat dalam mengelola keuangan dan membuat laporan keuangan yang akurat? (ya/tidak) ") == "ya":
+                bakat ="feb"
+            else:
+                bakat = "ulang"
+                
+        elif "bisnis" not in minat and "administrasi" in minat:
+            if input("Apakah kamu memiliki kemampuan dalam mengorganisir tugas dan pekerjaan dengan baik? (ya/tidak)") == "ya":
+                bakat ="fisip"
+            elif input("Apakah kamu memiliki bakat dalam hal manajemen keuangan publik dan pengelolaan anggaran? (ya/tidak)") == "ya":
+                bakat ="fisip"
+            else:
+                bakat = "ulang"
+
         
     if(bakat == "ulang"):
         pesan = "Maaf anda mungkin harus mengulangi di tahap minat karena tidak memiliki bakat di bidang "
