@@ -210,11 +210,11 @@ def bakat(nilai, minat):
     elif nilai == "kimia":
         if "bioproses" in minat and "lingkungan" in minat:
             if input("Apakah kamu memiliki kemampuan memproses zat kimia untuk bahan industri? (ya/tidak) ") == "ya":
-                bakat ="tek_kimia"
+                bakat ="ft"
             elif input("Apakah kamu memiliki kemampuan memanajemen produksi dan operasional industri? (ya/tidak) ") == "ya":
-                bakat ="tek_industri"
+                bakat ="ft"
             elif input("Apakah kamu mempunyai kemampuan untuk penanganan limbah industri? (ya/tidak)") == "ya":
-                bakat ="tek_lingkungan"
+                bakat ="ft"
             elif input("Apakah kamu mempunyai kemampuan untuk pengolahan dan penilitian produk pangan? (ya/tidak)") == "ya":
                 bakat ="tek_pangan"
             else:
@@ -222,17 +222,17 @@ def bakat(nilai, minat):
         
         elif "bioproses" in minat and "lingkungan" not in minat:
             if input("Apakah kamu memiliki kemampuan memproses zat kimia untuk bahan industri? (ya/tidak) ") == "ya":
-                bakat ="tek_kimia"
+                bakat ="ft"
             elif input("Apakah kamu memiliki kemampuan memanajemen produksi dan operasional industri? (ya/tidak) ") == "ya":
-                bakat ="tek_industri"
+                bakat ="ft"
             else:
                 bakat = "ulang"
                 
         elif "bioproses" not in minat and "lingkungan" in minat:
             if input("Apakah kamu mempunyai kemampuan untuk penanganan limbah industri? (ya/tidak)") == "ya":
-                bakat ="tek_lingkungan"
+                bakat ="ft"
             elif input("Apakah kamu mempunyai kemampuan untuk pengolahan dan penilitian produk pangan? (ya/tidak)") == "ya":
-                bakat ="tek_pangan"
+                bakat ="ft"
             else:
                 bakat = "ulang"
 
