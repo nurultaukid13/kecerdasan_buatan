@@ -113,100 +113,100 @@ def bakat(nilai, minat):
     if nilai == "matematika":
         if "teknologi" in minat and "bisnis" not in minat and "kontruksi" not in minat:
             if input("Apakah kamu memiliki kemampuan memecahkan masalah logika dengan baik? (ya/tidak) ") == "ya":
-                bakat ="logika"
+                bakat ="fik"
             elif input("Apakah kamu memiliki kemampuan teknis yang kuat? (ya/tidak) ") == "ya":
-                bakat ="teknis"
+                bakat ="ft"
             elif input("Apakah kamu mempunyai kemampuan untuk menggambar dan mendesain dengan baik?? (ya/tidak)") == "ya":
-                bakat ="desain"
+                bakat ="fad"
             elif input("Apakah kamu mempunyai kemampuan untuk membuat sistem pertanian?? (ya/tidak)") == "ya":
-                bakat ="agro"
+                bakat ="faperta"
             else:
                 bakat = "ulang"
 
         elif "teknologi" in minat and "bisnis" in minat and "kontruksi" not in minat:
             if input("Apakah kamu memiliki kemampuan memecahkan masalah logika dengan baik? (ya/tidak) ") == "ya":
-                bakat ="logika"
+                bakat ="fik"
             elif input("Apakah kamu memiliki kemampuan untuk mengelola waktu dengan baik dan mampu mengatur jadwal dengan efektif? (ya/tidak)") =="ya":
-                bakat ="administrasi"
+                bakat ="fisip"
             elif input("Apakah kamu mempunyai kemampuan untuk membuat sistem pertanian?? (ya/tidak)") == "ya":
-                bakat ="agro"
-            elif input("Apakah kamu memiliki keterampilan kepemimpinan dan manajemen yang kuat??? (ya/tidak)") == "ya":
-                bakat ="manajemen"
+                bakat ="faperta"
+            elif input("Apakah kamu memiliki keterampilan kepemimpinan dan manajemen yang kuat? (ya/tidak)") == "ya":
+                bakat ="feb"
             else:
                 bakat = "ulang"
                 
         elif "teknologi" in minat and "bisnis" in minat and "kontruksi" in minat:
             if input("Apakah kamu memiliki kemampuan memecahkan masalah logika dengan baik? (ya/tidak) ") == "ya":
-                bakat ="logika"
+                bakat ="fik"
             elif input("Apakah kamu mempunyai kemampuan untuk membuat sistem pertanian?? (ya/tidak)") == "ya":
-                bakat ="agro"
+                bakat ="faperta"
             elif input("Apakah kamu memiliki kemampuan teknis yang kuat? (ya/tidak) ") == "ya":
-                bakat ="teknis"
+                bakat ="ft"
             elif input("Apakah kamu mempunyai kemampuan untuk menggambar dan mendesain dengan baik?? (ya/tidak)") == "ya":
-                bakat ="desain"
+                bakat ="fad"
             else:
                 bakat = "ulang"
         
         elif "teknologi" not in minat and "bisnis" in minat and "kontruksi" in minat:
             if input("Apakah kamu mempunyai kemampuan untuk membuat sistem pertanian?? (ya/tidak)") == "ya":
-                bakat ="agro"
+                bakat ="faperta"
             elif input("Apakah kamu memiliki kemampuan teknis yang kuat? (ya/tidak) ") == "ya":
-                bakat ="teknis"
+                bakat ="ft"
             elif input("Apakah kamu mempunyai kemampuan untuk menggambar dan mendesain dengan baik?? (ya/tidak)") == "ya":
-                bakat ="desain"
+                bakat ="fad"
             else:
                 bakat = "ulang"
                 
         elif "teknologi" not in minat and "bisnis" in minat and "kontruksi" not in minat:
             if input("Apakah kamu memiliki keterampilan kepemimpinan dan manajemen yang kuat??? (ya/tidak)") == "ya":
-                bakat ="manajemen"
+                bakat ="feb"
             elif input("Apakah kamu mempunyai kemampuan untuk membuat sistem pertanian?? (ya/tidak)") == "ya":
-                bakat ="agro"
+                bakat ="faperta"
             else:
                 bakat = "ulang"
                 
         elif "teknologi" not in minat and "bisnis" not in minat and "kontruksi" in minat:
             if input("Apakah kamu memiliki kemampuan teknis yang kuat? (ya/tidak) ") == "ya":
-                bakat ="teknis"
+                bakat ="ft"
             elif input("Apakah kamu mempunyai kemampuan untuk menggambar dan mendesain dengan baik?? (ya/tidak)") == "ya":
-                bakat ="desain"
+                bakat ="fad"
             else:
                 bakat = "ulang"
                 
         elif "teknologi" in minat and "bisnis" not in minat and "kontruksi" in minat:
             if input("Apakah kamu memiliki kemampuan teknis yang kuat? (ya/tidak) ") == "ya":
-                bakat ="teknis"
+                bakat ="ft"
             elif input("Apakah kamu mempunyai kemampuan untuk menggambar dan mendesain dengan baik?? (ya/tidak)") == "ya":
-                bakat ="desain"
+                bakat ="fad"
             elif input("Apakah kamu memiliki kemampuan memecahkan masalah logika dengan baik? (ya/tidak) ") == "ya":
-                bakat ="logika"
+                bakat ="fik"
             elif input("Apakah kamu mempunyai kemampuan untuk membuat sistem pertanian?? (ya/tidak)") == "ya":
-                bakat ="agro"
+                bakat ="faperta"
             else:
                 bakat = "ulang"
                 
     elif nilai == "fisika":
         if "murni" in minat and "kontruksi" in minat:
             if input("Apakah kamu memiliki kemampuan menyelesaikan permasalahan fisika secara toeristis? (ya/tidak) ") == "ya":
-                bakat ="fisika"
+                bakat ="ft"
             elif input("Apakah kamu memiliki kemampuan teknis yang kuat? (ya/tidak) ") == "ya":
-                bakat ="teknis"
+                bakat ="ft"
             elif input("Apakah kamu mempunyai kemampuan untuk menggambar dan mendesain dengan baik?? (ya/tidak)") == "ya":
-                bakat ="desain"
+                bakat ="fad"
             else:
                 bakat = "ulang"
         
         elif "murni" in minat and "kontruksi" not in minat:
             if input("Apakah kamu memiliki kemampuan menyelesaikan permasalahan fisika secara toeristis? (ya/tidak) ") == "ya":
-                bakat ="fisika"
+                bakat ="ft"
             else:
                 bakat = "ulang"
         
         elif "murni" not in minat and "kontruksi" in minat:
             if input("Apakah kamu memiliki kemampuan teknis yang kuat? (ya/tidak) ") == "ya":
-                bakat ="teknis"
+                bakat ="ft"
             elif input("Apakah kamu mempunyai kemampuan untuk menggambar dan mendesain dengan baik?? (ya/tidak)") == "ya":
-                bakat ="desain"
+                bakat ="fad"
             else:
                 bakat = "ulang"
                 
