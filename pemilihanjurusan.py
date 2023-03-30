@@ -319,11 +319,36 @@ def bakat(nilai, minat):
         if "ilmu_sosial" in minat:
             if input("Apakah kamu memiliki kemampuan komunikasi yang baik secara lisan dan tertulis? (ya/tidak) ") == "ya":
                 bakat ="fisip"
-            elif input("Apakah kamu memiliki kemampuan mengelola software desain seperti Adobe Illustrator, Photoshop, dll? (ya/tidak) ") == "ya":
+            elif input("Apakah kamu memiliki keterampilan dalam menafsirkan teks bahasa Indonesia seperti sastra atau dokumen sejarah? (ya/tidak) ") == "ya":
                 bakat ="fisip"
             else:
                 bakat = "ulang"
-                 
+
+    elif nilai == "biologi":
+        if "pertanian" in minat and "lingkungan" in minat:
+            if input("Apakah Anda memiliki kemampuan untuk melakukan perencanaan dan manajemen bisnis dalam industri pertanian? (ya/tidak) ") == "ya":
+                bakat ="faperta"
+            elif input("Apakah kamu memiliki bakat dalam merancang dan mengembangkan teknologi pengelolahan hasil pertanian? (ya/tidak) ") == "ya":
+                bakat ="faperta"
+            elif input("Apakah kamu memiliki kemampuan analitis yang baik dan menyelesaikan masalah yang berkaitan dengan lingkungan? (ya/tidak)") == "ya":
+                bakat ="ft"
+            else:
+                bakat = "ulang"
+        
+        elif "pertanian" in minat and "lingkungan" not in minat:
+            if input("Apakah Anda memiliki kemampuan untuk melakukan perencanaan dan manajemen bisnis dalam industri pertanian? (ya/tidak) ") == "ya":
+                bakat ="faperta"
+            elif input("Apakah kamu memiliki bakat dalam merancang dan mengembangkan teknologi pengelolahan hasil pertanian? (ya/tidak) ") == "ya":
+                bakat ="faperta"
+            else:
+                bakat = "ulang"
+                
+        elif "pertanian" not in minat and "lingkungan" in minat:
+            if input("Apakah kamu memiliki kemampuan analitis yang baik dan menyelesaikan masalah yang berkaitan dengan lingkungan? (ya/tidak)") == "ya":
+                bakat ="ft"
+            else:
+                bakat = "ulang"
+    
     if(bakat == "ulang"):
         pesan = "Maaf anda mungkin harus mengulangi di tahap minat karena tidak memiliki bakat di bidang "
         if len(minat) == 1:
@@ -339,6 +364,122 @@ def bakat(nilai, minat):
     return bakat
 
 
+def preferensi_kerja(nilai, minat, bakat):
+    if nilai == "matematika":
+        if "teknologi" in minat and "bisnis" not in minat and "kontruksi" not in minat:
+            if bakat == "fik":
+                if input("Apakah Anda lebih tertarik untuk bekerja pada proyek-proyek pengembangan perangkat lunak dan infrastrukturnya? (ya/tidak) ") == "ya":
+                    jurusan ="informatika"
+                elif input("Apakah Anda lebih tertarik untuk bekerja pada software bisnis? (ya/tidak) ") == "ya":
+                    jurusan ="Sistem informasi"
+                elif input("Apakah Anda lebih tertarik untuk bekerja pada sebagai analis data? (ya/tidak) ") == "ya":
+                    jurusan ="Sains Data"
+                else:
+                    jurusan = "ulang"
+            elif bakat == "ft":
+                if input("Apakah anda tertarik pada pekerjaan yang terkait dengan otomotif? (ya/tidak) ") == "ya":
+                    jurusan ="teknik mesin"
+                else:
+                    jurusan = "ulang"
+            elif bakat == "fad":
+                if input("Apakah kamu tertarik bekerja pada proyek desain yang bersifat digital? (ya/tidak)") == "ya":
+                    bakat ="Desain Komunikasi Visual"
+                else:
+                    jurusan = "ulang"
+            elif bakat == "faperta":
+                if input("Apakah Anda lebih suka bekerja pada teknologi pertanian yang berbasis pada teknologi digital dan mekanik? (ya/tidak)") == "ya":
+                    bakat ="Agroteknologi"
+                else:
+                    jurusan = "ulang"
+
+        elif "teknologi" in minat and "bisnis" in minat and "kontruksi" not in minat:
+            if bakat == "fik":
+                if input("Apakah Anda lebih tertarik untuk bekerja pada proyek-proyek pengembangan perangkat lunak dan infrastrukturnya? (ya/tidak) ") == "ya":
+                    jurusan ="informatika"
+                elif input("Apakah Anda lebih tertarik untuk bekerja pada software bisnis? (ya/tidak) ") == "ya":
+                    jurusan ="Sistem informasi"
+                elif input("Apakah Anda lebih tertarik untuk bekerja pada sebagai analis data? (ya/tidak) ") == "ya":
+                    jurusan ="Sains Data"
+                else:
+                    jurusan = "ulang"
+            elif bakat == "ft":
+                if input("Apakah anda tertarik pada pekerjaan yang terkait dengan otomotif? (ya/tidak) ") == "ya":
+                    jurusan ="teknik mesin"
+                else:
+                    jurusan = "ulang"
+            elif bakat == "fad":
+                if input("Apakah kamu tertarik bekerja pada proyek desain yang bersifat digital? (ya/tidak)") == "ya":
+                    bakat ="Desain Komunikasi Visual"
+                else:
+                    jurusan = "ulang"
+            elif bakat == "faperta":
+                if input("Apakah Anda lebih suka bekerja pada teknologi pertanian yang berbasis pada teknologi digital dan mekanik? (ya/tidak)") == "ya":
+                    bakat ="Agroteknologi"
+                else:
+                    jurusan = "ulang"
+            elif bakat == "feb":
+                if input("Apakah Anda lebih suka bekerja pada teknologi pertanian yang berbasis pada teknologi digital dan mekanik? (ya/tidak)") == "ya":
+                    bakat ="Agroteknologi"
+                else:
+                    jurusan = "ulang"
+        
+                
+        elif "teknologi" in minat and "bisnis" in minat and "kontruksi" in minat:
+            if input("Apakah kamu memiliki kemampuan memecahkan masalah logika dengan baik? (ya/tidak) ") == "ya":
+                bakat ="fik"
+            elif input("Apakah kamu mempunyai kemampuan untuk membuat sistem pertanian?? (ya/tidak)") == "ya":
+                bakat ="faperta"
+            elif input("Apakah kamu memiliki kemampuan teknis yang kuat? (ya/tidak) ") == "ya":
+                bakat ="ft"
+            elif input("Apakah kamu mempunyai kemampuan untuk menggambar dan mendesain dengan baik?? (ya/tidak)") == "ya":
+                bakat ="fad"
+            else:
+                bakat = "ulang"
+        
+        elif "teknologi" not in minat and "bisnis" in minat and "kontruksi" in minat:
+            if input("Apakah kamu mempunyai kemampuan untuk membuat sistem pertanian?? (ya/tidak)") == "ya":
+                bakat ="faperta"
+            elif input("Apakah kamu memiliki kemampuan teknis yang kuat? (ya/tidak) ") == "ya":
+                bakat ="ft"
+            elif input("Apakah kamu mempunyai kemampuan untuk menggambar dan mendesain dengan baik?? (ya/tidak)") == "ya":
+                bakat ="fad"
+            else:
+                bakat = "ulang"
+                
+        elif "teknologi" not in minat and "bisnis" in minat and "kontruksi" not in minat:
+            if input("Apakah kamu memiliki keterampilan kepemimpinan dan manajemen yang kuat??? (ya/tidak)") == "ya":
+                bakat ="feb"
+            elif input("Apakah kamu mempunyai kemampuan untuk membuat sistem pertanian?? (ya/tidak)") == "ya":
+                bakat ="faperta"
+            else:
+                bakat = "ulang"
+                
+        elif "teknologi" not in minat and "bisnis" not in minat and "kontruksi" in minat:
+            if input("Apakah kamu memiliki kemampuan teknis yang kuat? (ya/tidak) ") == "ya":
+                bakat ="ft"
+            elif input("Apakah kamu mempunyai kemampuan untuk menggambar dan mendesain dengan baik?? (ya/tidak)") == "ya":
+                bakat ="fad"
+            else:
+                bakat = "ulang"
+                
+        elif "teknologi" in minat and "bisnis" not in minat and "kontruksi" in minat:
+            if input("Apakah kamu memiliki kemampuan teknis yang kuat? (ya/tidak) ") == "ya":
+                bakat ="ft"
+            elif input("Apakah kamu mempunyai kemampuan untuk menggambar dan mendesain dengan baik?? (ya/tidak)") == "ya":
+                bakat ="fad"
+            elif input("Apakah kamu memiliki kemampuan memecahkan masalah logika dengan baik? (ya/tidak) ") == "ya":
+                bakat ="fik"
+            elif input("Apakah kamu mempunyai kemampuan untuk membuat sistem pertanian?? (ya/tidak)") == "ya":
+                bakat ="faperta"
+            else:
+                bakat = "ulang"
+                
+    
+    if(jurusan == "ulang"):
+        print("Maaf anda mungkin harus mengulangi di tahap bakat karena tidak memiliki jurusan yang sesuai di "+bakat)
+    
+    return jurusan
+
 nilai=nilai_akademik()
 minat= minat(nilai)
-bakat(nilai, minat)
+bakat= bakat(nilai, minat)
