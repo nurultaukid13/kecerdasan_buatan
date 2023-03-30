@@ -378,7 +378,7 @@ def preferensi_kerja(nilai, minat, bakat):
                     jurusan = "ulang"
             elif bakat == "ft":
                 if input("Apakah anda tertarik pada pekerjaan yang terkait dengan otomotif? (ya/tidak) ") == "ya":
-                    jurusan ="teknik mesin"
+                    jurusan ="Teknik Mesin"
                 else:
                     jurusan = "ulang"
             elif bakat == "fad":
