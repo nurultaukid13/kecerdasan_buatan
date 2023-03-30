@@ -73,16 +73,13 @@ def minat(nilai):
                 "Apakah kamu menyukai kegiatan yang berhubungan dengan kontruksi? (ya/tidak) "},
             {"teknologi":
                 "Apakah kamu menyukai kegiatan yang berhubungan dengan teknologi? (ya/tidak) "},
-            {"ilmu_sosial":
-                "Apakah kamu menyukai kegiatan yang berhubungan dengan ilmu sosial? (ya/tidak) "}
         ],
         "pkn": [
             {"hukum": "Apakah kamu menyukai kegiatan yang berhubungan dengan hukum? (ya/tidak) "},
             {"ilmu_sosial": "Apakah kamu menyukai kegiatan yang berhubungan dengan ilmu sosial? "}
         ],
         "bahasa": [
-            {"ilmu_sosial": "Apakah kamu menyukai kegiatan yang berhubungan dengan ilmu sosial? "},
-            {"bisnis": "Apakah kamu menyukai kegiatan yang berhubungan langsung dengan bisnis ? (ya/tidak) "}
+            {"ilmu_sosial": "Apakah kamu menyukai kegiatan yang berhubungan dengan ilmu sosial? "}
         ],
         "biologi": [
             {"pertanian":
@@ -268,7 +265,65 @@ def bakat(nilai, minat):
             else:
                 bakat = "ulang"
 
+    elif nilai == "seni":
+        if "konstruksi" in minat and "teknologi" in minat:
+            if input("Apakah kamu memiliki kemampuan untuk menggambar dengan akurat dan membuat model 3D? (ya/tidak) ") == "ya":
+                bakat ="fad"
+            elif input("Apakah kamu memiliki kemampuan mengelola software desain seperti Adobe Illustrator, Photoshop, dll? (ya/tidak) ") == "ya":
+                bakat ="fad"
+            elif input("Apakah kamu memiliki keterampilan untuk mengubah tata letak dan dekorasi suatu ruangan? (ya/tidak)") == "ya":
+                bakat ="fad"
+            else:
+                bakat = "ulang"
         
+        elif "konstruksi" in minat and "teknologi" not in minat:
+            if input("Apakah kamu memiliki kemampuan untuk menggambar dengan akurat dan membuat model 3D? (ya/tidak) ") == "ya":
+                bakat ="fad"
+            elif input("Apakah kamu memiliki keterampilan untuk mengubah tata letak dan dekorasi suatu ruangan? (ya/tidak)") == "ya":
+                bakat ="fad"
+            else:
+                bakat = "ulang"
+                
+        elif "konstruksi" not in minat and "teknologi" in minat:
+            if input("Apakah kamu memiliki kemampuan mengelola software desain seperti Adobe Illustrator, Photoshop, dll? (ya/tidak) ") == "ya":
+                bakat ="fad"
+            else:
+                bakat = "ulang"
+
+    elif nilai == "pkn":
+        if "hukum" in minat and "ilmu_sosial" in minat:
+            if input("Apakah kamu memiliki nilai integritas yang tinggi, serta dapat mempertahankan kebeneran dan keadilan? (ya/tidak) ") == "ya":
+                bakat ="hukum"
+            elif input("Apakah kamu memiliki keterampilan komunikasi yang baik dan mampu berbicara dalam beberapa bahasa? (ya/tidak) ") == "ya":
+                bakat ="fisip"
+            elif input("Apakah kamu memiliki bakat dalam merencanakan dan mengkoordinasi perjalanan wisata, mulai dari transportasi, akomodasi, hingga kegiatan? (ya/tidak)") == "ya":
+                bakat ="fisip"
+            else:
+                bakat = "ulang"
+        
+        elif "hukum" in minat and "ilmu_sosial" not in minat:
+            if input("Apakah kamu memiliki nilai integritas yang tinggi, serta dapat mempertahankan kebeneran dan keadilan? (ya/tidak) ") == "ya":
+                bakat ="hukum"
+            else:
+                bakat = "ulang"
+                
+        elif "hukum" not in minat and "ilmu_sosial" in minat:
+            if input("Apakah kamu memiliki keterampilan komunikasi yang baik dan mampu berbicara dalam beberapa bahasa? (ya/tidak) ") == "ya":
+                bakat ="fisip"
+            elif input("Apakah kamu memiliki bakat dalam merencanakan dan mengkoordinasi perjalanan wisata, mulai dari transportasi, akomodasi, hingga kegiatan? (ya/tidak)") == "ya":
+                bakat ="fisip"
+            else:
+                bakat = "ulang"
+
+    elif nilai == "bahasa":
+        if "ilmu_sosial" in minat:
+            if input("Apakah kamu memiliki kemampuan komunikasi yang baik secara lisan dan tertulis? (ya/tidak) ") == "ya":
+                bakat ="fisip"
+            elif input("Apakah kamu memiliki kemampuan mengelola software desain seperti Adobe Illustrator, Photoshop, dll? (ya/tidak) ") == "ya":
+                bakat ="fisip"
+            else:
+                bakat = "ulang"
+                 
     if(bakat == "ulang"):
         pesan = "Maaf anda mungkin harus mengulangi di tahap minat karena tidak memiliki bakat di bidang "
         if len(minat) == 1:
