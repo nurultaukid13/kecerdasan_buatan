@@ -476,7 +476,11 @@ def preferensi_kerja(nilai, minat, bakat):
                 
     
     if(jurusan == "ulang"):
+        print("=========================================================")
         print("Maaf anda mungkin harus mengulangi di tahap bakat karena tidak memiliki jurusan yang sesuai di "+bakat)
+    else:
+        print("=========================================================")
+        print("Dari nilai akademik, minat, bakat dan preferensi kerja anda kami merekomendasikan anda untuk memilih jurusan "+jurusan)
     
     return jurusan
 
