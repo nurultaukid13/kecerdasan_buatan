@@ -643,6 +643,42 @@ def preferensi_kerja(nilai, minat, bakat):
                 else:
                     jurusan = "ulang"
 
+    elif nilai == "ekonomi":
+        if "bisnis" in minat and "administrasi" in minat:
+            if bakat == "feb":
+                if input("Apakah Anda ingin bekerja di industri tertentu seperti perbankan, ritel, manufaktur, ataupun teknologi?(ya/tidak) ") == "ya":
+                    jurusan ="Menejemen"
+                elif input("Apakah Anda ingin bekerja di industri perencanaan keuangan dan pelaporan keuangan dalam pekerjaan akuntansi? (ya/tidak) ") == "ya":
+                    jurusan ="Akutansi"
+                else:
+                    jurusan = "ulang"
+            
+            elif bakat == "fisip":
+                if input("Apakah Anda ingin bekerja di lembaga pemerintah, organisasi nirlaba, atau sektor swasta yang bergerak di bidang publik? (ya/tidak) ") == "ya":
+                    jurusan ="Administrasi Publik"
+                elif input("Apakah Anda tertarik bekerja pada bidang keuangan ataupun pemasaran? (ya/tidak) ") == "ya":
+                    jurusan ="Administrasi Bisnis"
+                else:
+                    jurusan = "ulang"
+        
+        elif "bisnis" in minat and "administrasi" not in minat:
+            if bakat == "feb":
+                if input("Apakah Anda ingin bekerja di industri tertentu seperti perbankan, ritel, manufaktur, ataupun teknologi?(ya/tidak) ") == "ya":
+                    jurusan ="Menejemen"
+                elif input("Apakah Anda ingin bekerja di industri perencanaan keuangan dan pelaporan keuangan dalam pekerjaan akuntansi? (ya/tidak) ") == "ya":
+                    jurusan ="Akutansi"
+                else:
+                    jurusan = "ulang"
+                
+        elif "bisnis" not in minat and "administrasi" in minat:
+            if bakat == "fisip":
+                if input("Apakah Anda ingin bekerja di lembaga pemerintah, organisasi nirlaba, atau sektor swasta yang bergerak di bidang publik? (ya/tidak) ") == "ya":
+                    jurusan ="Administrasi Publik"
+                elif input("Apakah Anda tertarik bekerja pada bidang keuangan ataupun pemasaran? (ya/tidak) ") == "ya":
+                    jurusan ="Administrasi Bisnis"
+                else:
+                    jurusan = "ulang"
+                    
     if(jurusan == "ulang"):
         print("===================================================================")
         print("Maaf anda mungkin harus mengulangi di tahap bakat karena tidak memiliki jurusan yang sesuai di "+bakat)
