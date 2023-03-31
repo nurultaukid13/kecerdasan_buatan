@@ -678,7 +678,7 @@ def preferensi_kerja(nilai, minat, bakat):
                     jurusan ="Administrasi Bisnis"
                 else:
                     jurusan = "ulang"
-                    
+
     if(jurusan == "ulang"):
         print("===================================================================")
         print("Maaf anda mungkin harus mengulangi di tahap bakat karena tidak memiliki jurusan yang sesuai di "+bakat)
