@@ -645,4 +645,3 @@ nilai=nilai_akademik()
 minat= minat(nilai)
 bakat= bakat(nilai, minat)
 preferensi_kerja(nilai, minat, bakat)
-ubah
