@@ -711,6 +711,76 @@ def preferensi_kerja(nilai, minat, bakat):
                 else:
                     bakat = "ulang"
 
+    elif nilai == "seni":
+        if "konstruksi" in minat and "teknologi" in minat:
+            if bakat == "fad":
+                if input("Apakah anda tertarik pada pembuatan desain rumah tinggal dan bangunan yang berkelanjutan? (ya/tidak) ") == "ya":
+                    bakat ="arsitektur"
+                elif input("Apakah anda tertarik pada desain digital dan desain grafis? (ya/tidak) ") == "ya":
+                    bakat ="desain komunikasi visual"
+                elif input("Apakah anda tertarik pada desain interior rumah dan desain komersial? (ya/tidak)") == "ya":
+                    bakat ="interior desain"
+                else:
+                    bakat = "ulang"
+
+        elif "konstruksi" in minat and "teknologi" not in minat:
+            if bakat == "fad":
+                if input("Apakah anda tertarik pada pembuatan desain rumah tinggal dan bangunan yang berkelanjutan? (ya/tidak) ") == "ya":
+                    bakat ="arsitektur"
+                elif input("Apakah anda tertarik pada desain interior rumah dan desain komersial? (ya/tidak)") == "ya":
+                    bakat ="interior desain"
+                else:
+                    bakat = "ulang"
+
+        elif "konstruksi" not in minat and "teknologi" in minat:
+            if bakat == "fad":
+                if input("Apakah anda tertarik pada desain digital dan desain grafis? (ya/tidak) ") == "ya":
+                    bakat ="desain komunikasi visual"
+                else:
+                    bakat = "ulang"
+
+    elif nilai == "bahasa":
+        if "ilmu_sosial" in minat:
+            if bakat == "fisip":
+                if input("Apakah anda tertarik pada industri jurnalistik dan media massa? (ya/tidak) ") == "ya":
+                    bakat ="ilmu komunikasi"
+                elif input("Apakah anda tertarik pada pembelajaran dan pengajaran bahasa indonesia? (ya/tidak) ") == "ya":
+                    bakat ="linguistik indonesia"
+                else:
+                    bakat = "ulang"
+
+    elif nilai == "biologi":
+        if "pertanian" in minat and "lingkungan" in minat:
+            if bakat == "faperta":
+                if input("Apakah anda tertarik pada pengembangan usaha dan manajemen bisnis pada bidang pertanian? (ya/tidak) ") == "ya":
+                    bakat ="agribisnis"
+                elif input("Apakah anda tertarik pada industri pengolahan bahan baku pertanian? (ya/tidak) ") == "ya":
+                    bakat ="agroteknologi"
+                else:
+                    bakat = "ulang"
+
+            elif bakat == "ft":
+                if input("Apakah anda tertarik pada pengelolaan limbah dan pengelolaan polusi? (ya/tidak)") == "ya":
+                    bakat ="teknik lingkungan"
+                else:
+                    bakat = "ulang"
+        
+        elif "pertanian" in minat and "lingkungan" not in minat:
+            if bakat == "faperta":
+                if input("Apakah anda tertarik pada pengembangan usaha dan manajemen bisnis pada bidang pertanian? (ya/tidak) ") == "ya":
+                    bakat ="agribisnis"
+                elif input("Apakah anda tertarik pada industri pengolahan bahan baku pertanian? (ya/tidak) ") == "ya":
+                    bakat ="agroteknologi"
+                else:
+                    bakat = "ulang"
+                
+        elif "pertanian" not in minat and "lingkungan" in minat:
+            if bakat == "ft":
+                if input("Apakah anda tertarik pada pengelolaan limbah dan pengelolaan polusi? (ya/tidak)") == "ya":
+                    bakat ="teknik lingkungan"
+                else:
+                    bakat = "ulang"
+
     if(jurusan == "ulang"):
         print("===================================================================")
         print("Maaf anda mungkin harus mengulangi di tahap bakat karena tidak memiliki jurusan yang sesuai di "+bakat)
