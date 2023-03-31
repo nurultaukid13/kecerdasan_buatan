@@ -679,6 +679,38 @@ def preferensi_kerja(nilai, minat, bakat):
                 else:
                     jurusan = "ulang"
 
+    elif nilai == "pkn":
+        if "hukum" in minat and "ilmu_sosial" in minat:
+            if bakat == "hukum":
+                if input("Apakah Anda lebih tertarik pada pekerjaan yang berhubungan dengan penerapan hukum dan pembuatan kebijakan hukum? (ya/tidak) ") == "ya":
+                    bakat ="Ilmu Hukum"
+                else:
+                    bakat = "ulang"
+
+            elif bakat == "fisip":
+                if input("Apakah Anda lebih tertarik pada pekerjaan di industri pariwisata seperti wisata budaya atau wisata petualangan? (ya/tidak) ") == "ya":
+                    bakat ="Pariwisata"
+                elif input("Apakah Anda lebih tertarik pada pekerjaan yang melibatkan diplomasi multilateral dan diplomasi bilateral? (ya/tidak)") == "ya":
+                    bakat ="Hubungan Internasional"
+                else:
+                    bakat = "ulang"
+
+        elif "hukum" in minat and "ilmu_sosial" not in minat:
+            if bakat == "hukum":
+                if input("Apakah Anda lebih tertarik pada pekerjaan yang berhubungan dengan penerapan hukum dan pembuatan kebijakan hukum? (ya/tidak) ") == "ya":
+                    bakat ="Ilmu Hukum"
+                else:
+                    bakat = "ulang"
+                
+        elif "hukum" not in minat and "ilmu_sosial" in minat:
+            if bakat == "fisip":
+                if input("Apakah Anda lebih tertarik pada pekerjaan di industri pariwisata seperti wisata budaya atau wisata petualangan? (ya/tidak) ") == "ya":
+                    bakat ="Pariwisata"
+                elif input("Apakah Anda lebih tertarik pada pekerjaan yang melibatkan diplomasi multilateral dan diplomasi bilateral? (ya/tidak)") == "ya":
+                    bakat ="Hubungan Internasional"
+                else:
+                    bakat = "ulang"
+
     if(jurusan == "ulang"):
         print("===================================================================")
         print("Maaf anda mungkin harus mengulangi di tahap bakat karena tidak memiliki jurusan yang sesuai di "+bakat)
