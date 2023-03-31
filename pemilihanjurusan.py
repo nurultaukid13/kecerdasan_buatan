@@ -105,7 +105,7 @@ def minat(nilai):
     else:
         print("Maaf anda mungkin harus mengulangi di tahap nilai akademik karena tidak memiliki minat di bidang " + nilai)
         return ["ulang"]
-    
+
 def bakat(nilai, minat):
     if nilai == "matematika":
         if "teknologi" in minat and "bisnis" not in minat and "kontruksi" not in minat:
@@ -386,12 +386,12 @@ def preferensi_kerja(nilai, minat, bakat):
                     jurusan = "ulang"
             elif bakat == "fad":
                 if input("Apakah kamu tertarik bekerja pada proyek desain yang bersifat digital? (ya/tidak)") == "ya":
-                    bakat ="Desain Komunikasi Visual"
+                    jurusan ="Desain Komunikasi Visual"
                 else:
                     jurusan = "ulang"
             elif bakat == "faperta":
                 if input("Apakah Anda lebih suka bekerja pada teknologi pertanian yang berbasis pada teknologi digital dan mekanik? (ya/tidak)") == "ya":
-                    bakat ="Agroteknologi"
+                    jurusan ="Agroteknologi"
                 else:
                     jurusan = "ulang"
 
@@ -412,25 +412,25 @@ def preferensi_kerja(nilai, minat, bakat):
                     jurusan = "ulang"
             elif bakat == "fad":
                 if input("Apakah kamu tertarik bekerja pada proyek desain yang bersifat digital? (ya/tidak)") == "ya":
-                    bakat ="Desain Komunikasi Visual"
+                    jurusan ="Desain Komunikasi Visual"
                 else:
                     jurusan = "ulang"
             elif bakat == "faperta":
                 if input("Apakah Anda lebih suka bekerja pada teknologi pertanian yang berbasis pada teknologi digital dan mekanik? (ya/tidak)") == "ya":
-                    bakat ="Agroteknologi"
+                    jurusan ="Agroteknologi"
                 if input("Apakah Anda tertarik pada pekerjaan yang memerlukan kemampuan untuk mengelola keuangan dan memantau kinerja bisnis pertanian? (ya/tidak)") == "ya":
-                    bakat ="agribisnis"
+                    jurusan ="agribisnis"
                 else:
                     jurusan = "ulang"
             elif bakat == "feb":
                 if input("Apakah Anda lebih tertarik bekerja pada pengembangan ekonomi yang berfokus pada pemerataan pembangunan? (ya/tidak)") == "ya":
-                    bakat ="Ekonomi Pembangunan"
+                    jurusan ="Ekonomi Pembangunan"
                 elif input("Apakah Anda tertarik bekerja pada manajemen strategis yang berfokus pada pengembangan bisnis?  (ya/tidak)") == "ya":
-                    bakat ="Manajemen"
+                    jurusan ="Manajemen"
                 elif input("Apakah Anda lebih suka bekerja dengan angka-angka dan data keuangan bisnis?  (ya/tidak)") == "ya":
-                    bakat ="Akuntansi Manajemen"
+                    jurusan ="Akuntansi Manajemen"
                 elif input("Apakah Anda suka bekerja secara mandiri dalam mengelola ide baru dalam bisnis dan mengambil risiko yang diperlukan untuk mencapai tujuan bisnis?  (ya/tidak)") == "ya":
-                    bakat ="Kewirausahaan"
+                    jurusan ="Kewirausahaan"
                 else:
                     jurusan = "ulang"
         
@@ -453,27 +453,27 @@ def preferensi_kerja(nilai, minat, bakat):
                     jurusan = "ulang"
             elif bakat == "fad":
                 if input("Apakah kamu tertarik bekerja pada proyek desain yang bersifat digital? (ya/tidak)") == "ya":
-                    bakat ="Desain Komunikasi Visual"
+                    jurusan ="Desain Komunikasi Visual"
                 elif input("Apakah Anda tertarik pada pekerjaan yang memerlukan kreativitas dalam merancang bangunan yang berfungsi dan estetis? (ya/tidak)") == "ya":
-                    bakat ="Arsitektur"
+                    jurusan ="Arsitektur"
                 else:
                     jurusan = "ulang"
             elif bakat == "faperta":
                 if input("Apakah Anda lebih suka bekerja pada teknologi pertanian yang berbasis pada teknologi digital dan mekanik? (ya/tidak)") == "ya":
-                    bakat ="Agroteknologi"
+                    jurusan ="Agroteknologi"
                 elif input("Apakah Anda tertarik pada pekerjaan yang memerlukan kemampuan untuk mengelola keuangan dan memantau kinerja bisnis pertanian? (ya/tidak)") == "ya":
-                    bakat ="agribisnis"
+                    jurusan ="agribisnis"
                 else:
                     jurusan = "ulang"
             elif bakat == "feb":
                 if input("Apakah Anda lebih tertarik bekerja pada pengembangan ekonomi yang berfokus pada pemerataan pembangunan? (ya/tidak)") == "ya":
-                    bakat ="Ekonomi Pembangunan"
+                    jurusan ="Ekonomi Pembangunan"
                 elif input("Apakah Anda tertarik bekerja pada manajemen strategis yang berfokus pada pengembangan bisnis?  (ya/tidak)") == "ya":
-                    bakat ="Manajemen"
+                    jurusan ="Manajemen"
                 elif input("Apakah Anda lebih suka bekerja dengan angka-angka dan data keuangan bisnis?  (ya/tidak)") == "ya":
-                    bakat ="Akuntansi Manajemen"
+                    jurusan ="Akuntansi Manajemen"
                 elif input("Apakah Anda suka bekerja secara mandiri dalam mengelola ide baru dalam bisnis dan mengambil risiko yang diperlukan untuk mencapai tujuan bisnis?  (ya/tidak)") == "ya":
-                    bakat ="Kewirausahaan"
+                    jurusan ="Kewirausahaan"
                 else:
                     jurusan = "ulang"
         
@@ -485,21 +485,21 @@ def preferensi_kerja(nilai, minat, bakat):
                     jurusan = "ulang"
             elif bakat == "fad":
                 if input("Apakah Anda tertarik pada pekerjaan yang memerlukan kreativitas dalam merancang bangunan yang berfungsi dan estetis? (ya/tidak)") == "ya":
-                    bakat ="Arsitektur"
+                    jurusan ="Arsitektur"
                 else:
                     jurusan = "ulang"
             elif bakat == "faperta":
                 if input("Apakah Anda tertarik pada pekerjaan yang memerlukan kemampuan untuk mengelola keuangan dan memantau kinerja bisnis pertanian? (ya/tidak)") == "ya":
-                    bakat ="agribisnis"
+                    jurusan ="agribisnis"
                 else:
                     jurusan = "ulang"
             elif bakat == "feb":
                 if input("Apakah Anda lebih tertarik bekerja pada pengembangan ekonomi yang berfokus pada pemerataan pembangunan? (ya/tidak)") == "ya":
-                    bakat ="Ekonomi Pembangunan"
+                    jurusan ="Ekonomi Pembangunan"
                 elif input("Apakah Anda tertarik bekerja pada manajemen strategis yang berfokus pada pengembangan bisnis?  (ya/tidak)") == "ya":
-                    bakat ="Manajemen"
+                    jurusan ="Manajemen"
                 elif input("Apakah Anda lebih suka bekerja dengan angka-angka dan data keuangan bisnis?  (ya/tidak)") == "ya":
-                    bakat ="Akuntansi Manajemen"
+                    jurusan ="Akuntansi Manajemen"
                 elif input("Apakah Anda suka bekerja secara mandiri dalam mengelola ide baru dalam bisnis dan mengambil risiko yang diperlukan untuk mencapai tujuan bisnis?  (ya/tidak)") == "ya":
                     bakat ="Kewirausahaan"
                 else:
@@ -508,18 +508,18 @@ def preferensi_kerja(nilai, minat, bakat):
         elif "teknologi" not in minat and "bisnis" in minat and "kontruksi" not in minat:
             if bakat == "faperta":
                 if input("Apakah Anda tertarik pada pekerjaan yang memerlukan kemampuan untuk mengelola keuangan dan memantau kinerja bisnis pertanian? (ya/tidak)") == "ya":
-                    bakat ="agribisnis"
+                    jurusan ="agribisnis"
                 else:
                     jurusan = "ulang"
             elif bakat == "feb":
                 if input("Apakah Anda lebih tertarik bekerja pada pengembangan ekonomi yang berfokus pada pemerataan pembangunan? (ya/tidak)") == "ya":
-                    bakat ="Ekonomi Pembangunan"
+                    jurusan ="Ekonomi Pembangunan"
                 elif input("Apakah Anda tertarik bekerja pada manajemen strategis yang berfokus pada pengembangan bisnis?  (ya/tidak)") == "ya":
-                    bakat ="Manajemen"
+                    jurusan ="Manajemen"
                 elif input("Apakah Anda lebih suka bekerja dengan angka-angka dan data keuangan bisnis?  (ya/tidak)") == "ya":
-                    bakat ="Akuntansi Manajemen"
+                    jurusan ="Akuntansi Manajemen"
                 elif input("Apakah Anda suka bekerja secara mandiri dalam mengelola ide baru dalam bisnis dan mengambil risiko yang diperlukan untuk mencapai tujuan bisnis?  (ya/tidak)") == "ya":
-                    bakat ="Kewirausahaan"
+                    jurusan ="Kewirausahaan"
                 else:
                     jurusan = "ulang"
                 
@@ -531,7 +531,7 @@ def preferensi_kerja(nilai, minat, bakat):
                     jurusan = "ulang"
             elif bakat == "fad":
                 if input("Apakah Anda tertarik pada pekerjaan yang memerlukan kreativitas dalam merancang bangunan yang berfungsi dan estetis? (ya/tidak)") == "ya":
-                    bakat ="Arsitektur"
+                    jurusan ="Arsitektur"
                 else:
                     jurusan = "ulang"
                 
@@ -554,48 +554,48 @@ def preferensi_kerja(nilai, minat, bakat):
                     jurusan = "ulang"
             elif bakat == "fad":
                 if input("Apakah kamu tertarik bekerja pada proyek desain yang bersifat digital? (ya/tidak)") == "ya":
-                    bakat ="Desain Komunikasi Visual"
+                    jurusan ="Desain Komunikasi Visual"
                 elif input("Apakah Anda tertarik pada pekerjaan yang memerlukan kreativitas dalam merancang bangunan yang berfungsi dan estetis? (ya/tidak)") == "ya":
-                    bakat ="Arsitektur"
+                    jurusan ="Arsitektur"
                 else:
                     jurusan = "ulang"
             elif bakat == "faperta":
                 if input("Apakah Anda lebih suka bekerja pada teknologi pertanian yang berbasis pada teknologi digital dan mekanik? (ya/tidak)") == "ya":
-                    bakat ="Agroteknologi"
+                    jurusan ="Agroteknologi"
                 else:
                     jurusan = "ulang"
     
     elif nilai == "fisika":
         if "murni" in minat and "kontruksi" in minat:
             if bakat == "fad":
-                if input("Apakah Anda lebih tertarik untuk bekerja pada proyek-proyek pengembangan perangkat lunak dan infrastrukturnya? (ya/tidak) ") == "ya":
+                if input("Apakah Anda tertarik pada pekerjaan yang memerlukan kreativitas dalam merancang bangunan yang berfungsi dan estetis? (ya/tidak)") == "ya":
                     jurusan ="Arsitektur"
                 else:
                     jurusan = "ulang"
             elif bakat == "ft":
-                if input("Apakah anda tertarik pada pekerjaan yang terkait dengan otomotif? (ya/tidak) ") == "ya":
+                if input("Apakah Anda lebih tertarik bekerja di laboratorium dalam bidang riset fisika? (ya/tidak) ") == "ya":
                     jurusan ="Fisika"
-                elif input("Apakah anda tertarik pada pekerjaan yang terkait dengan otomotif? (ya/tidak) ") == "ya":
+                elif input("Apakah Anda tertarik pada pekerjaan yang memerlukan keahlian teknis dalam merancang, membangun, dan mengelola infrastruktur fisik? (ya/tidak) ") == "ya":
                     jurusan ="Teknik Sipil"
                 else:
                     jurusan = "ulang"
     
         elif "murni" in minat and "kontruksi" not in minat:
             if bakat == "ft":
-                if input("Apakah anda tertarik pada pekerjaan yang terkait dengan otomotif? (ya/tidak) ") == "ya":
+                if input("Apakah Anda lebih tertarik bekerja di laboratorium dalam bidang riset fisika? (ya/tidak) ") == "ya":
                     jurusan ="Fisika"
                 else:
                     jurusan = "ulang"
                     
         elif "murni" not in minat and "kontruksi" in minat:
             if bakat == "ft":
-                if input("Apakah anda tertarik pada pekerjaan yang terkait dengan otomotif? (ya/tidak) ") == "ya":
+                if input("Apakah Anda tertarik pada pekerjaan yang memerlukan keahlian teknis dalam merancang, membangun, dan mengelola infrastruktur fisik? (ya/tidak) ") == "ya":
                     jurusan ="Teknik Sipil"
                 else:
                     jurusan = "ulang"
                     
             elif bakat == "fad":
-                if input("Apakah anda tertarik pada pekerjaan yang terkait dengan otomotif? (ya/tidak) ") == "ya":
+                if input("Apakah Anda tertarik pada pekerjaan yang memerlukan kreativitas dalam merancang bangunan yang berfungsi dan estetis? (ya/tidak)") == "ya":
                     jurusan ="Arsitektur"
                 else:
                     jurusan = "ulang"
@@ -603,7 +603,7 @@ def preferensi_kerja(nilai, minat, bakat):
     elif nilai == "kimia":
         if "bioproses" in minat and "lingkungan" in minat:
             if bakat == "ft":
-                if input("Apakah Anda lebih tertarik untuk bekerja pada proyek-proyek pengembangan perangkat lunak dan infrastrukturnya? (ya/tidak) ") == "ya":
+                if input("Apakah Anda lebih tertarik bekerja dalam pengolahan bahan kimia untuk kebutuhan industri?(ya/tidak) ") == "ya":
                     jurusan ="Teknik Kimia"
                 elif input("Apakah Anda lebih tertarik untuk bekerja pada proyek-proyek pengembangan perangkat lunak dan infrastrukturnya? (ya/tidak) ") == "ya":
                     jurusan ="Teknik Industri"
