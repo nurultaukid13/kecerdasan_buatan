@@ -31,16 +31,25 @@ def nilai_akademik():
         },
         "Apakah kamu memiliki nilai biologi yang bagus?": {
             "ya": "biologi",
-            "tidak": "Maaf kami tidak bisa merekomendasikan jurusan apapun"
+            "tidak": "ulang"
         }
     }
 
     pertanyaan = "Apakah kamu memiliki nilai matematika yang bagus?"
     while pertanyaan in mata_pelajaran:
         jawaban = input(pertanyaan + " (ya/tidak) ")
+        if jawaban not in ["ya", "tidak"]:
+            print("Jawaban tidak valid, silakan jawab dengan ya atau tidak.")
+            nilai_akademik = "ulang"
+            break
         pertanyaan = mata_pelajaran[pertanyaan][jawaban] if jawaban in mata_pelajaran[pertanyaan] else None
-        if pertanyaan and pertanyaan != "Maaf kami tidak bisa merekomendasikan jurusan apapun":
+        if pertanyaan and pertanyaan != "ulang":
             nilai_akademik = pertanyaan
+        else:
+            print("===================================================================")
+            print("Maaf kami tidak bisa merekomendasikan jurusan apapun")
+            print("Mohon mengulangi tahap ini lagi dan memilih salah satu mata pelajaran yang anda sukai")
+            nilai_akademik = "ulang"
 
     return nilai_akademik
 
@@ -103,6 +112,7 @@ def minat(nilai):
     if minat:
         return minat
     else:
+        print("===================================================================")
         print("Maaf anda mungkin harus mengulangi di tahap nilai akademik karena tidak memiliki minat di bidang " + nilai)
         return ["ulang"]
 
@@ -354,6 +364,7 @@ def bakat(nilai, minat):
                 bakat = "ulang"
     
     if(bakat == "ulang"):
+        print("===================================================================")
         pesan = "Maaf anda mungkin harus mengulangi di tahap minat karena tidak memiliki bakat di bidang "
         if len(minat) == 1:
             pesan += minat[0]
@@ -605,43 +616,43 @@ def preferensi_kerja(nilai, minat, bakat):
             if bakat == "ft":
                 if input("Apakah Anda lebih tertarik bekerja dalam pengolahan bahan kimia untuk kebutuhan industri?(ya/tidak) ") == "ya":
                     jurusan ="Teknik Kimia"
-                elif input("Apakah Anda lebih tertarik untuk bekerja pada proyek-proyek pengembangan perangkat lunak dan infrastrukturnya? (ya/tidak) ") == "ya":
+                elif input("Apakah Anda lebih tertarik bekerja di departemen produksi dalam sektor industri? (ya/tidak) ") == "ya":
                     jurusan ="Teknik Industri"
-                elif input("Apakah Anda lebih tertarik untuk bekerja pada proyek-proyek pengembangan perangkat lunak dan infrastrukturnya? (ya/tidak) ") == "ya":
+                elif input("Apakah Anda lebih menyukai pekerjaan yang melibatkan pengembangan teknologi lingkungan atau lebih suka bekerja pada perencanaan kebijakan lingkungan? (ya/tidak) ") == "ya":
                     jurusan ="Teknik Lingkungan"
-                elif input("Apakah Anda lebih tertarik untuk bekerja pada proyek-proyek pengembangan perangkat lunak dan infrastrukturnya? (ya/tidak) ") == "ya":
+                elif input("Apakah anda tertarik pada pekerjaan pengembangan produk pangan serta pengolahannya? (ya/tidak) ") == "ya":
                     jurusan ="Teknologi Pangan"
                 else:
                     jurusan = "ulang"
     
         elif "bioproses" in minat and "lingkungan" not in minat:
             if bakat == "ft":
-                if input("Apakah Anda lebih tertarik untuk bekerja pada proyek-proyek pengembangan perangkat lunak dan infrastrukturnya? (ya/tidak) ") == "ya":
+                if input("Apakah Anda lebih tertarik bekerja dalam pengolahan bahan kimia untuk kebutuhan industri?(ya/tidak) ") == "ya":
                     jurusan ="Teknik Kimia"
-                elif input("Apakah Anda lebih tertarik untuk bekerja pada proyek-proyek pengembangan perangkat lunak dan infrastrukturnya? (ya/tidak) ") == "ya":
+                elif input("Apakah Anda lebih tertarik bekerja di departemen produksi dalam sektor industri? (ya/tidak) ") == "ya":
                     jurusan ="Teknik Industri"
                 else:
                     jurusan = "ulang"
                     
         elif "bioproses" not in minat and "lingkungan" in minat:
             if bakat == "ft":
-                if input("Apakah Anda lebih tertarik untuk bekerja pada proyek-proyek pengembangan perangkat lunak dan infrastrukturnya? (ya/tidak) ") == "ya":
+                if input("Apakah Anda lebih menyukai pekerjaan yang melibatkan pengembangan teknologi lingkungan atau lebih suka bekerja pada perencanaan kebijakan lingkungan? (ya/tidak) ") == "ya":
                     jurusan ="Teknik Lingkungan"
-                elif input("Apakah Anda lebih tertarik untuk bekerja pada proyek-proyek pengembangan perangkat lunak dan infrastrukturnya? (ya/tidak) ") == "ya":
+                elif input("Apakah anda tertarik pada pekerjaan pengembangan produk pangan serta pengolahannya? (ya/tidak) ") == "ya":
                     jurusan ="Teknologi Pangan"
                 else:
                     jurusan = "ulang"
-                    
+
     if(jurusan == "ulang"):
-        print("=========================================================")
+        print("===================================================================")
         print("Maaf anda mungkin harus mengulangi di tahap bakat karena tidak memiliki jurusan yang sesuai di "+bakat)
     else:
-        print("=========================================================")
+        print("===================================================================")
         print("Dari nilai akademik, minat, bakat dan preferensi kerja anda kami merekomendasikan anda untuk memilih jurusan "+jurusan)
     
     return jurusan
 
-nilai=nilai_akademik()
-minat= minat(nilai)
-bakat= bakat(nilai, minat)
+nilai = nilai_akademik()
+minat = minat(nilai)
+bakat = (nilai, minat)
 preferensi_kerja(nilai, minat, bakat)
