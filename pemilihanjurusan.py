@@ -739,25 +739,25 @@ def preferensi_kerja(nilai, minat, bakat):
                 else:
                     bakat = "ulang"
 
-    elif nilai == "bahasa":
-        if "ilmu_sosial" in minat:
-            if bakat == "fisip":
-                if input("Apakah anda tertarik pada industri jurnalistik dan media massa? (ya/tidak) ") == "ya":
-                    bakat ="ilmu komunikasi"
-                elif input("Apakah anda tertarik pada pembelajaran dan pengajaran bahasa indonesia? (ya/tidak) ") == "ya":
-                    bakat ="linguistik indonesia"
-                else:
-                    bakat = "ulang"
+        elif nilai == "bahasa":
+            if "ilmu_sosial" in minat:
+                if bakat == "fisip":
+                    if input("Apakah anda tertarik pada industri jurnalistik dan media massa? (ya/tidak) ") == "ya":
+                        bakat ="ilmu komunikasi"
+                    elif input("Apakah anda tertarik pada pembelajaran dan pengajaran bahasa indonesia? (ya/tidak) ") == "ya":
+                        bakat ="linguistik indonesia"
+                    else:
+                        bakat = "ulang"
 
-    elif nilai == "biologi":
-        if "pertanian" in minat and "lingkungan" in minat:
-            if bakat == "faperta":
-                if input("Apakah anda tertarik pada pengembangan usaha dan manajemen bisnis pada bidang pertanian? (ya/tidak) ") == "ya":
-                    bakat ="agribisnis"
-                elif input("Apakah anda tertarik pada industri pengolahan bahan baku pertanian? (ya/tidak) ") == "ya":
-                    bakat ="agroteknologi"
-                else:
-                    bakat = "ulang"
+        elif nilai == "biologi":
+            if "pertanian" in minat and "lingkungan" in minat:
+                if bakat == "faperta":
+                    if input("Apakah anda tertarik pada pengembangan usaha dan manajemen bisnis pada bidang pertanian? (ya/tidak) ") == "ya":
+                        bakat ="agribisnis"
+                    elif input("Apakah anda tertarik pada industri pengolahan bahan baku pertanian? (ya/tidak) ") == "ya":
+                        bakat ="agroteknologi"
+                    else:
+                        bakat = "ulang"
 
             elif bakat == "ft":
                 if input("Apakah anda tertarik pada pengelolaan limbah dan pengelolaan polusi? (ya/tidak)") == "ya":
