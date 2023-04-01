@@ -647,7 +647,6 @@ def preferensi_kerja(nilai, minat, bakat):
         print("Maaf anda mungkin harus mengulangi di tahap bakat karena tidak memiliki jurusan yang sesuai di "+bakat)
         return jurusan
 
-
 #main program
 minat = nilai = bakat = jurusan =''
 while True:
