@@ -48,7 +48,6 @@ def nilai_akademik():
             print("===================================================================")
             print("Maaf kami tidak bisa merekomendasikan jurusan apapun")
             print("Mohon mengulangi tahap ini lagi dan memilih salah satu mata pelajaran yang anda sukai")
-            nilai_akademik = "ulang"
 
     return nilai_akademik
 
