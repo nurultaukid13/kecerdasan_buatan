@@ -31,14 +31,14 @@ y.append(fuzz.interp_membership(kelembapan, kelembapan_basah, input_kelembapan))
 print("==========================")
 print("Derajat Keanggotaan suhu")
 if x[0] > 0:
-    print("Dingin: " + str(x[0]))
+    print("Dingin: " + str(round(x[0], 3)))
 if x[1] > 0:
-    print("Panas: " + str(x[1]))
+    print("Panas: " + str(round(x[1], 3)))
 print("Derajat Keanggotaan kelembapan")
 if y[0] > 0:
-    print("Kering: " + str(y[0]))
+    print("Kering: " + str(round(y[0], 3)))
 if y[1] > 0:
-    print("Basah: " + str(y[1]))
+    print("Basah: " + str(round(y[1], 3)))
 
 
 # Memodelkan Rule Base dan Inferensi Mamdani
@@ -68,7 +68,7 @@ z = fuzz.defuzz(kecepatan, output_combined, 'centroid')
 # Menampilkan hasil output
 print("==========================")
 print("Output:")
-print("Kecepatan Kipas:", z)
+print("Kecepatan Kipas:", round (z, 3))
 
 if z >= 150:
     print("Kondisi: Cepat")
@@ -102,7 +102,7 @@ if(z>=150):
 elif(z<150):
     output_membership = fuzz.interp_membership(kecepatan, kecepatan_lambat, z)
     plt.plot(z, fuzz.interp_membership(kecepatan, kecepatan_lambat, z), 'ko', label='Output')
-plt.annotate(f"z = {z}", (z, output_membership), textcoords="offset points", xytext=(0,10), ha='center')
+plt.annotate(f"z = {round(z, 3)}", (z, output_membership), textcoords="offset points", xytext=(0,10), ha='center')
 plt.legend()
 
 # Menampilkan grafik
