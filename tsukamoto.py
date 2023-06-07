@@ -31,14 +31,14 @@ y.append(fuzz.interp_membership(kelembapan, kelembapan_basah, input_kelembapan))
 print("==========================")
 print("Derajat Keanggotaan suhu")
 if x[0] > 0:
-    print("Dingin: " + str(x[0]))
+    print("Dingin: " + str(round(x[0], 3)))
 if x[1] > 0:
-    print("Panas: " + str(x[1]))
+    print("Panas: " + str(round(x[1], 3)))
 print("Derajat Keanggotaan kelembapan")
 if y[0] > 0:
-    print("Kering: " + str(y[0]))
+    print("Kering: " + str(round(y[0], 3)))
 if y[1] > 0:
-    print("Basah: " + str(y[1]))
+    print("Basah: " + str(round(y[1], 3)))
 
 
 # Memodelkan Rule Base dan Inferensi Tsukamoto
@@ -54,24 +54,24 @@ if y[1] > 0:
 
 apred1 = np.fmin(x[1], y[1])
 print("\n==========================")
-print("Cepat, Nilai apred1 = ", apred1)
-z1 = (apred1 * 150) + 50
-print("Nilai z1 = ", z1)
+print("Cepat, Nilai apred1 =", round(apred1, 3))
+z1 = round((apred1 * 150) + 50, 3)
+print("Nilai z1 =", z1)
 
 apred2 = np.fmin(x[0], y[0])
-print("Lambat, Nilai apred2 = ", apred2)
-z2 = 50 - (apred2 * 150)
-print("Nilai z2 = ", z2)
+print("Lambat, Nilai apred2 =", round(apred2, 3))
+z2 = round(50 - (apred2 * 150), 3)
+print("Nilai z2 =", z2)
 
 apred3 = np.fmin(x[0], y[1])
-print("Lambat, Nilai apred3 = ", apred3)
-z3 = 50 - (apred3 * 150)
-print("Nilai z3 = ", z3)
+print("Lambat, Nilai apred3 =", round(apred3, 3))
+z3 = round(50 - (apred3 * 150), 3)
+print("Nilai z3 =", z3)
 
 apred4 = np.fmin(x[1], y[0])
-print("Cepat, Nilai apred4 = ", apred4)
-z4 = (apred4 * 150) + 50
-print("Nilai z4 = ", z4)
+print("Cepat, Nilai apred4 =", round(apred4, 3))
+z4 = round((apred4 * 150) + 50, 3)
+print("Nilai z4 =", z4)
 
 # Menggabungkan aturan-aturan dengan operasi maksimum
 output_combined = np.maximum(np.maximum(z1, z2), np.maximum(z3, z4))
