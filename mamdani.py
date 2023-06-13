@@ -3,6 +3,7 @@ import skfuzzy as fuzz
 import matplotlib.pyplot as plt
 
 # Variable
+<<<<<<< HEAD
 suhu = np.arange(0, 60, 1)
 kelembapan = np.arange(0, 150, 1)
 kecepatan = np.arange(0, 250, 1)
@@ -14,6 +15,19 @@ kelembapan_kering = fuzz.trapmf(kelembapan, [0, 0, 50, 100])
 kelembapan_basah = fuzz.trapmf(kelembapan, [50, 100, 150, 150])
 kecepatan_lambat = fuzz.trapmf(kecepatan, [0, 0, 50, 200])
 kecepatan_cepat = fuzz.trapmf(kecepatan, [50, 200, 250, 250])
+=======
+suhu = np.arange(20, 40, 1)
+kelembapan = np.arange(0, 150, 1)
+kecepatan = np.arange(0, 185, 1)
+
+# Range himpunan fuzzy dari grafik
+suhu_dingin = fuzz.trapmf(suhu, [20, 20, 25, 30])
+suhu_panas = fuzz.trapmf(suhu, [25, 30, 40, 40])
+kelembapan_kering = fuzz.trapmf(kelembapan, [0, 0, 50,100])
+kelembapan_basah = fuzz.trapmf(kelembapan, [50, 100, 150, 150])
+kecepatan_lambat = fuzz.trapmf(kecepatan, [0, 0, 62, 124])
+kecepatan_cepat = fuzz.trapmf(kecepatan, [62, 124, 185, 185])
+>>>>>>> 3b44234 (hai)
 
 # Menentukan Input
 input_suhu = float(input("Masukkan suhu (20-40): "))

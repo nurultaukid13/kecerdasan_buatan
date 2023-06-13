@@ -3,17 +3,17 @@ import skfuzzy as fuzz
 import matplotlib.pyplot as plt
 
 #variabel
-suhu = np.arange(0, 60, 1)
+suhu = np.arange(20, 40, 1)
 kelembapan = np.arange(0, 150, 1)
-kecepatan = np.arange(0, 250, 1)
+kecepatan = np.arange(0, 185, 1)
 
 #range himpunan fuzzy dari grafik
-suhu_dingin = fuzz.trapmf(suhu, [0, 0, 20, 40])
-suhu_panas = fuzz.trapmf(suhu, [20, 40, 60, 60])
+suhu_dingin = fuzz.trapmf(suhu, [20, 20, 25, 30])
+suhu_panas = fuzz.trapmf(suhu, [25, 30, 40, 40])
 kelembapan_kering = fuzz.trapmf(kelembapan, [0, 0, 50, 100])
 kelembapan_basah = fuzz.trapmf(kelembapan, [50, 100, 150, 150])
-kecepatan_lambat = fuzz.trapmf(kecepatan, [0, 0, 50, 200])
-kecepatan_cepat = fuzz.trapmf(kecepatan, [50, 200, 250, 250])
+kecepatan_lambat = fuzz.trapmf(kecepatan, [0, 0, 62, 124])
+kecepatan_cepat = fuzz.trapmf(kecepatan, [62, 124, 185, 185])
 
 # Menentukan Input
 input_suhu = float(input("Masukkan suhu (20-40): "))
@@ -43,34 +43,34 @@ if y[1] > 0:
 
 # Memodelkan Rule Base dan Inferensi Tsukamoto
 
-#(z-50)/(250-50) = apred[i] ->cepat
-# z-50 = apred * 200
-# z = (apred *200) + 50
+#(z-0)/(185-0) = apred[i] ->cepat
+# z-10 = apred * 185
+# z = (apred *185)+ 0
 
-#(50-z)/(250-50) = apred[i] ->lambat
-# 50 -z = apred * 200
-# -z = (apred * 200) -50
-# z = 50 - (apred * 200)
+#(0-z)/(185-0) = apred[i] ->lambat
+# 0 -z = apred * 185
+# -z = (apred * 185)
+# z = -(apred * 185)
 
 apred1 = np.fmin(x[1], y[1])
 print("\n==========================")
 print("Cepat, Nilai apred1 =", round(apred1, 3))
-z1 = round((apred1 * 150) + 50, 3)
+z1 = round((apred1 * 185), 3)
 print("Nilai z1 =", z1)
 
 apred2 = np.fmin(x[0], y[0])
 print("Lambat, Nilai apred2 =", round(apred2, 3))
-z2 = round(50 - (apred2 * 150), 3)
+z2 = round(- (apred2 * 185), 3)
 print("Nilai z2 =", z2)
 
 apred3 = np.fmin(x[0], y[1])
 print("Lambat, Nilai apred3 =", round(apred3, 3))
-z3 = round(50 - (apred3 * 150), 3)
+z3 = round(10- (apred3 * 185), 3)
 print("Nilai z3 =", z3)
 
 apred4 = np.fmin(x[1], y[0])
 print("Cepat, Nilai apred4 =", round(apred4, 3))
-z4 = round((apred4 * 150) + 50, 3)
+z4 = round((apred4 * 185), 3)
 print("Nilai z4 =", z4)
 
 # Menggabungkan aturan-aturan dengan operasi maksimum
