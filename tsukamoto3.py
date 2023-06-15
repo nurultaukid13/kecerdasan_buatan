@@ -9,11 +9,16 @@ kecepatan = np.arange(0, 186, 1)
 
 #range himpunan fuzzy dari grafik
 suhu_dingin = fuzz.trapmf(suhu, [20, 20, 25, 30])
-suhu_panas = fuzz.trapmf(suhu, [25, 30, 40, 40])
-kelembapan_kering = fuzz.trapmf(kelembapan, [0, 0, 50, 100])
-kelembapan_basah = fuzz.trapmf(kelembapan, [50, 100, 150, 150])
+suhu_hangat = fuzz.trimf(suhu, [25, 30, 35])
+suhu_panas = fuzz.trapmf(suhu, [30, 35, 40, 40])
+
+kelembapan_kering = fuzz.trapmf(kelembapan, [0, 0, 25, 50])
+kelembapan_normal = fuzz.trimf(kelembapan, [25, 50, 75])
+kelembapan_basah = fuzz.trapmf(kelembapan, [50, 75, 100, 100])
+
 kecepatan_lambat = fuzz.trapmf(kecepatan, [0, 0, 62, 124])
-kecepatan_cepat = fuzz.trapmf(kecepatan, [62, 124, 185, 185])
+kecepatan_sedang = fuzz.trimf(kecepatan, [62, 124, 185])
+kecepatan_cepat = fuzz.trapmf(kecepatan, [124, 185, 185, 185])
 
 # Menentukan Input
 input_suhu = float(input("Masukkan suhu (20-40): "))
@@ -22,10 +27,12 @@ input_kelembapan = float(input("Masukkan kelembapan (50-100): "))
 # Menentukan Derajat Keanggotaan (fuzzifikasi)
 x = []
 x.append(fuzz.interp_membership(suhu, suhu_dingin, input_suhu))
+x.append(fuzz.interp_membership(suhu, suhu_hangat, input_suhu))
 x.append(fuzz.interp_membership(suhu, suhu_panas, input_suhu))
 
 y = []
 y.append(fuzz.interp_membership(kelembapan, kelembapan_kering, input_kelembapan))
+y.append(fuzz.interp_membership(kelembapan, kelembapan_normal, input_kelembapan))
 y.append(fuzz.interp_membership(kelembapan, kelembapan_basah, input_kelembapan))
 
 print("==========================")
@@ -33,24 +40,31 @@ print("Derajat Keanggotaan suhu")
 if x[0] > 0:
     print("Dingin: " + str(round(x[0], 3)))
 if x[1] > 0:
-    print("Panas: " + str(round(x[1], 3)))
+    print("Hangat: " + str(round(x[1], 3)))
+if x[2] > 0:
+    print("Panas: " + str(round(x[2], 3)))
 print("Derajat Keanggotaan kelembapan")
 if y[0] > 0:
     print("Kering: " + str(round(y[0], 3)))
 if y[1] > 0:
-    print("Basah: " + str(round(y[1], 3)))
+    print("Normal: " + str(round(y[1], 3)))
+if y[2] > 0:
+    print("Basah: " + str(round(y[2], 3)))
 
 
 # Memodelkan Rule Base dan Inferensi Tsukamoto
 
-#(z-0)/(185-0) = apred[i] ->cepat
-# z-10 = apred * 185
-# z = (apred *185)+ 0
+#z = (apred[i] * (z2 - z1)) + z1 ->cepat
+# z = (apred[i] * (124-0))+0
+# z = (apred *124)
 
-#(0-z)/(185-0) = apred[i] ->lambat
-# 0 -z = apred * 185
-# -z = (apred * 185)
-# z = -(apred * 185)
+#z = (apred[i] * (z2 - z1)) + z1 ->sedang
+#z = (apred[i] * (185-62)) +62
+#z = (apred[i] * 123)+62
+
+#z = (apred[i] * (z2 - z1)) + z1->lambat
+#z = (apred[i] * (185-124))+124
+#z = (apred[i] * 61))+124
 
 apred1 = np.fmin(x[1], y[1])
 print("\n==========================")
@@ -60,12 +74,12 @@ print("Nilai z1 =", z1)
 
 apred2 = np.fmin(x[0], y[0])
 print("Lambat, Nilai apred2 =", round(apred2, 3))
-z2 = round(0- (apred2 * 185), 3)
+z2 = round(- (apred2 * 185), 3)
 print("Nilai z2 =", z2)
 
 apred3 = np.fmin(x[0], y[1])
 print("Lambat, Nilai apred3 =", round(apred3, 3))
-z3 = round( 0-(apred3 * 185), 3)
+z3 = round(10- (apred3 * 185), 3)
 print("Nilai z3 =", z3)
 
 apred4 = np.fmin(x[1], y[0])

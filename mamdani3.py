@@ -20,6 +20,10 @@ kecepatan_lambat = fuzz.trapmf(kecepatan, [0, 0, 62, 124])
 kecepatan_sedang = fuzz.trimf(kecepatan, [62, 124, 185])
 kecepatan_cepat = fuzz.trapmf(kecepatan, [124, 185, 185, 185])
 
+# Menentukan Input
+input_suhu = float(input("Masukkan suhu (20-40): "))
+input_kelembapan = float(input("Masukkan kelembapan (50-100): "))
+
 # Menentukan Derajat Keanggotaan (fuzzifikasi)
 x = []
 x.append(fuzz.interp_membership(suhu, suhu_dingin, input_suhu))
