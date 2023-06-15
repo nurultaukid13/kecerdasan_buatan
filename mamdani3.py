@@ -19,9 +19,6 @@ kelembapan_basah = fuzz.trapmf(kelembapan, [50, 75, 100, 100])
 kecepatan_lambat = fuzz.trapmf(kecepatan, [0, 0, 62, 124])
 kecepatan_sedang = fuzz.trimf(kecepatan, [62, 124, 185])
 kecepatan_cepat = fuzz.trapmf(kecepatan, [124, 185, 185, 185])
-# Menentukan Input
-input_suhu = float(input("Masukkan suhu (20-40): "))
-input_kelembapan = float(input("Masukkan kelembapan (50-100): "))
 
 # Menentukan Derajat Keanggotaan (fuzzifikasi)
 x = []
@@ -90,51 +87,45 @@ output_cepat = np.fmin(rule8, kecepatan_cepat)
 rule9 = np.fmin(x[2], y[2])
 output_cepat = np.fmin(rule9, kecepatan_cepat)
 
+#dataset
+dataset = [
+    [25.6, 96.3],
+    [23, 93.6],
+    [28.3, 84.5],
+    [28.6, 82.5],
+    [29.4, 78],
+    [33.7, 56.8],
+    [38.1, 64],
+    [35.8, 60.7],
+    [21.7, 99.9],
+    [20.6, 99.9],
+    [32.9, 79.7],
+    [29.7, 79.1]
+]
+
 # Menggabungkan aturan-aturan dengan operasi maksimum
 output_combined = np.maximum(output_cepat, output_lambat)
+mid_value = fuzz.centroid(kecepatan, output_combined)
+print("Nilai Tengah Kecepatan Kipas:", round(mid_value, 3))
 
-# Defuzzifikasi menggunakan metode Mamdani
-z = fuzz.defuzz(kecepatan, output_combined, 'centroid')
-
-# Menampilkan hasil output
-print("==========================")
-print("Output:")
-print("Kecepatan Kipas:", round (z, 3))
-
-if z >= 150:
-    print("Kondisi: Cepat")
-else:
+if mid_value < 62:
     print("Kondisi: Lambat")
+elif mid_value >= 62 and mid_value <= 124:
+    print("Kondisi: Sedang")
+else:
+    print("Kondisi: Cepat")
 
 # Mengatur plot dan kurva
 plt.figure()
 
-# Menampilkan fungsi keanggotaan suhu
-plt.plot(suhu, suhu_dingin, 'r', label='Dingin')
-plt.plot(suhu, suhu_panas, 'b', label='Panas')
-plt.axvline(x=input_suhu, color='g', linestyle='--', label='Input Suhu')
-plt.legend()
-
-# Menampilkan fungsi keanggotaan kelembapan
-plt.figure()
-plt.plot(kelembapan, kelembapan_kering, 'r', label='Kering')
-plt.plot(kelembapan, kelembapan_basah, 'b', label='Basah')
-plt.axvline(x=input_kelembapan, color='g', linestyle='--', label='Input Kelembapan')
-plt.legend()
-
 # Menampilkan grafik output kecepatan kipas
 plt.figure()
 plt.plot(kecepatan, kecepatan_lambat, 'r', label='Lambat')
+plt.plot(kecepatan, kecepatan_sedang, 'g', label='Sedang')
 plt.plot(kecepatan, kecepatan_cepat, 'b', label='Cepat')
 
-if(z>=150):
-    output_membership = fuzz.interp_membership(kecepatan, kecepatan_cepat, z)
-    plt.plot(z, fuzz.interp_membership(kecepatan, kecepatan_cepat, z), 'ko', label='Output')
-elif(z<150):
-    output_membership = fuzz.interp_membership(kecepatan, kecepatan_lambat, z)
-    plt.plot(z, fuzz.interp_membership(kecepatan, kecepatan_lambat, z), 'ko', label='Output')
-plt.annotate(f"z = {round(z, 3)}", (z, output_membership), textcoords="offset points", xytext=(0,10), ha='center')
-plt.legend()
+plt.plot(mid_value, 0.5, 'ko', label='Output')
+plt.annotate(f"z = {round(mid_value, 3)}", (mid_value, 0.5), textcoords="offset points", xytext=(0, 10), ha='center')
 
-# Menampilkan grafik
+plt.legend()
 plt.show()
