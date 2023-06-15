@@ -8,9 +8,9 @@ kelembapan = np.arange(0, 150, 1)
 kecepatan = np.arange(0, 185, 1)
 
 # Range himpunan fuzzy dari grafik
-suhu_dingin = fuzz.trapmf(suhu, [20, 20, 25, 30])
-suhu_hangat = fuzz.trapmf(suhu, [25, 30, 35, 40])
-suhu_panas = fuzz.trapmf(suhu, [35, 40, 40, 40])
+suhu_dingin = fuzz.trapmf(suhu, [20, 20, 24, 28])
+suhu_hangat = fuzz.trapmf(suhu, [26, 29, 32, 35])
+suhu_panas = fuzz.trapmf(suhu, [34, 37, 40, 40])
 
 kelembapan_kering = fuzz.trapmf(kelembapan, [0, 0, 25, 40])
 kelembapan_normal = fuzz.trapmf(kelembapan, [35, 50, 60, 75])
