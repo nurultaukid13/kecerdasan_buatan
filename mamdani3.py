@@ -8,18 +8,17 @@ kelembapan = np.arange(0, 150, 1)
 kecepatan = np.arange(0, 185, 1)
 
 # Range himpunan fuzzy dari grafik
-suhu_dingin = fuzz.trapmf(suhu, [0, 0, 10, 15])
-suhu_hangat = fuzz.trapmf(suhu, [15, 20, 25, 30])
-suhu_panas = fuzz.trapmf(suhu, [25, 30, 40, 40])
+suhu_dingin = fuzz.trapmf(suhu, [20, 20, 25, 30])
+suhu_hangat = fuzz.trapmf(suhu, [25, 30, 35, 40])
+suhu_panas = fuzz.trapmf(suhu, [35, 40, 40, 40])
 
 kelembapan_kering = fuzz.trapmf(kelembapan, [0, 0, 25, 40])
-kelembapan_normal = fuzz.trapmf(kelembapan, [40, 50, 60, 70])
-kelembapan_basah = fuzz.trapmf(kelembapan, [60, 70, 100, 100])
+kelembapan_normal = fuzz.trapmf(kelembapan, [35, 50, 60, 75])
+kelembapan_basah = fuzz.trapmf(kelembapan, [60, 75, 100, 100])
 
-kecepatan_lambat = fuzz.trapmf(kecepatan, [0, 0, 30, 40])
-kecepatan_normal = fuzz.trapmf(kecepatan, [40, 60, 80, 100])
-kecepatan_cepat = fuzz.trapmf(kecepatan, [80, 100, 150, 150])
-
+kecepatan_lambat = fuzz.trapmf(kecepatan, [0, 0, 40, 60])
+kecepatan_normal = fuzz.trapmf(kecepatan, [50, 70, 90, 110])
+kecepatan_cepat = fuzz.trapmf(kecepatan, [100, 120, 150, 150])
 # Menentukan Input
 input_suhu = float(input("Masukkan suhu (20-40): "))
 input_kelembapan = float(input("Masukkan kelembapan (50-100): "))
@@ -40,12 +39,17 @@ print("Derajat Keanggotaan suhu")
 if x[0] > 0:
     print("Dingin: " + str(round(x[0], 3)))
 if x[1] > 0:
-    print("Panas: " + str(round(x[1], 3)))
+    print("Hangat: " + str(round(x[1], 3)))
+if x[2] > 0:
+    print("Panas: " + str(round(x[2], 3)))
+
 print("Derajat Keanggotaan kelembapan")
 if y[0] > 0:
     print("Kering: " + str(round(y[0], 3)))
 if y[1] > 0:
-    print("Basah: " + str(round(y[1], 3)))
+    print("Normal: " + str(round(y[1], 3)))
+if y[2] > 0:
+    print("Basah: " + str(round(y[2], 3)))
 
 
 # Memodelkan Rule Base dan Inferensi Mamdani
@@ -53,6 +57,10 @@ if y[1] > 0:
 # Rule 1: IF suhu panas AND kelembapan basah THEN kecepatan cepat
 rule1 = np.fmin(x[1], y[1])
 output_cepat = np.fmin(rule1, kecepatan_cepat)
+
+# Rule 2: IF suhu panas AND kelembapan basah THEN kecepatan cepat
+rule2 = np.fmin(x[1], y[1])
+output_cepat = np.fmin(rule2, kecepatan_cepat)
 
 # Rule 2: IF suhu dingin AND kelembapan kering THEN kecepatan lambat
 rule2 = np.fmin(x[0], y[0])
