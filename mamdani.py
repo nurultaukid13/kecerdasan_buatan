@@ -3,15 +3,15 @@ import skfuzzy as fuzz
 import matplotlib.pyplot as plt
 
 # Variable
-suhu = np.arange(20, 40, 1)
-kelembapan = np.arange(0, 150, 1)
-kecepatan = np.arange(0, 185, 1)
+suhu = np.arange(20, 41, 1)
+kelembapan = np.arange(0, 101, 1)
+kecepatan = np.arange(0, 186, 1)
 
 # Range himpunan fuzzy dari grafik
 suhu_dingin = fuzz.trapmf(suhu, [20, 20, 25, 30])
 suhu_panas = fuzz.trapmf(suhu, [25, 30, 40, 40])
-kelembapan_kering = fuzz.trapmf(kelembapan, [0, 0, 50,100])
-kelembapan_basah = fuzz.trapmf(kelembapan, [50, 100, 150, 150])
+kelembapan_kering = fuzz.trapmf(kelembapan, [0, 0, 25,50])
+kelembapan_basah = fuzz.trapmf(kelembapan, [25, 50, 100, 100])
 kecepatan_lambat = fuzz.trapmf(kecepatan, [0, 0, 62, 124])
 kecepatan_cepat = fuzz.trapmf(kecepatan, [62, 124, 185, 185])
 

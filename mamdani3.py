@@ -3,21 +3,21 @@ import skfuzzy as fuzz
 import matplotlib.pyplot as plt
 
 # Variable
-suhu = np.arange(20, 40, 1)
-kelembapan = np.arange(0, 150, 1)
-kecepatan = np.arange(0, 185, 1)
+suhu = np.arange(20, 41, 1)
+kelembapan = np.arange(0, 101, 1)
+kecepatan = np.arange(0, 186, 1)
 
 # Range himpunan fuzzy dari grafik
 suhu_dingin = fuzz.trapmf(suhu, [20, 20, 25, 30])
-suhu_hangat = fuzz.trapmf(suhu, [25, 30, 35, 40])
-suhu_panas = fuzz.trapmf(suhu, [35, 40, 40, 40])
+suhu_hangat = fuzz.trimf(suhu, [25, 30, 35])
+suhu_panas = fuzz.trapmf(suhu, [30, 35, 40, 40])
 
-kelembapan_kering = fuzz.trapmf(kelembapan, [0, 0, 25, 40])
-kelembapan_normal = fuzz.trapmf(kelembapan, [35, 50, 60, 75])
-kelembapan_basah = fuzz.trapmf(kelembapan, [60, 75, 100, 100])
+kelembapan_kering = fuzz.trapmf(kelembapan, [0, 0, 25, 50])
+kelembapan_normal = fuzz.trimf(kelembapan, [25, 50, 75])
+kelembapan_basah = fuzz.trapmf(kelembapan, [50, 75, 100, 100])
 
 kecepatan_lambat = fuzz.trapmf(kecepatan, [0, 0, 40, 60])
-kecepatan_sedang = fuzz.trapmf(kecepatan, [50, 70, 90, 110])
+kecepatan_normal = fuzz.trapmf(kecepatan, [50, 70, 90, 110])
 kecepatan_cepat = fuzz.trapmf(kecepatan, [100, 120, 150, 150])
 # Menentukan Input
 input_suhu = float(input("Masukkan suhu (20-40): "))
