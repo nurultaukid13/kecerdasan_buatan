@@ -16,9 +16,9 @@ kelembapan_kering = fuzz.trapmf(kelembapan, [0, 0, 25, 50])
 kelembapan_normal = fuzz.trimf(kelembapan, [25, 50, 75])
 kelembapan_basah = fuzz.trapmf(kelembapan, [50, 75, 100, 100])
 
-kecepatan_lambat = fuzz.trapmf(kecepatan, [0, 0, 40, 60])
-kecepatan_normal = fuzz.trapmf(kecepatan, [50, 70, 90, 110])
-kecepatan_cepat = fuzz.trapmf(kecepatan, [100, 120, 150, 150])
+kecepatan_lambat = fuzz.trapmf(kecepatan, [0, 0, 62, 124])
+kecepatan_sedang = fuzz.trimf(kecepatan, [62, 124, 185])
+kecepatan_cepat = fuzz.trapmf(kecepatan, [124, 185, 185, 185])
 # Menentukan Input
 input_suhu = float(input("Masukkan suhu (20-40): "))
 input_kelembapan = float(input("Masukkan kelembapan (50-100): "))
