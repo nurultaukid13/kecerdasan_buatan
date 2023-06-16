@@ -1,97 +1,8 @@
 import numpy as np
 import skfuzzy as fuzz
-import matplotlib.pyplot as plt
+from skfuzzy import control as ctrl
 
-# Variable
-suhu = np.arange(20, 41, 1)
-kelembapan = np.arange(0, 101, 1)
-kecepatan = np.arange(0, 186, 1)
-
-# Range himpunan fuzzy dari grafik
-suhu_dingin = fuzz.trapmf(suhu, [20, 20, 25, 30])
-suhu_hangat = fuzz.trimf(suhu, [25, 30, 35])
-suhu_panas = fuzz.trapmf(suhu, [30, 35, 40, 40])
-
-kelembapan_kering = fuzz.trapmf(kelembapan, [0, 0, 25, 50])
-kelembapan_normal = fuzz.trimf(kelembapan, [25, 50, 75])
-kelembapan_basah = fuzz.trapmf(kelembapan, [50, 75, 100, 100])
-
-kecepatan_lambat = fuzz.trapmf(kecepatan, [0, 0, 62, 124])
-kecepatan_sedang = fuzz.trimf(kecepatan, [62, 124, 185])
-kecepatan_cepat = fuzz.trapmf(kecepatan, [124, 185, 185, 185])
-
-# Menentukan Input
-input_suhu = float(input("Masukkan suhu (20-40): "))
-input_kelembapan = float(input("Masukkan kelembapan (50-100): "))
-
-# Menentukan Derajat Keanggotaan (fuzzifikasi)
-x = []
-x.append(fuzz.interp_membership(suhu, suhu_dingin, input_suhu))
-x.append(fuzz.interp_membership(suhu, suhu_hangat, input_suhu))
-x.append(fuzz.interp_membership(suhu, suhu_panas, input_suhu))
-
-y = []
-y.append(fuzz.interp_membership(kelembapan, kelembapan_kering, input_kelembapan))
-y.append(fuzz.interp_membership(kelembapan, kelembapan_normal, input_kelembapan))
-y.append(fuzz.interp_membership(kelembapan, kelembapan_basah, input_kelembapan))
-
-print("==========================")
-print("Derajat Keanggotaan suhu")
-if x[0] > 0:
-    print("Dingin: " + str(round(x[0], 3)))
-if x[1] > 0:
-    print("Hangat: " + str(round(x[1], 3)))
-if x[2] > 0:
-    print("Panas: " + str(round(x[2], 3)))
-
-print("Derajat Keanggotaan kelembapan")
-if y[0] > 0:
-    print("Kering: " + str(round(y[0], 3)))
-if y[1] > 0:
-    print("Normal: " + str(round(y[1], 3)))
-if y[2] > 0:
-    print("Basah: " + str(round(y[2], 3)))
-
-
-# Memodelkan Rule Base dan Inferensi Mamdani
-
-# Rule 1: IF suhu dingin AND kelembapan kering THEN kecepatan lambat
-rule1 = np.fmin(x[0], y[0])
-output_lambat = np.fmin(rule1, kecepatan_lambat)
-
-# Rule 2: IF suhu dingin AND kelembapan normal THEN kecepatan sedang
-rule2 = np.fmin(x[0], y[1])
-output_sedang = np.fmin(rule2, kecepatan_sedang)
-
-# Rule 3: IF suhu dingin AND kelembapan basah THEN kecepatan sedang
-rule3 = np.fmin(x[1], y[2])
-output_sedang = np.fmin(rule3, kecepatan_sedang)
-
-# Rule 4: IF suhu hangat AND kelembapan kering THEN kecepatan sedang
-rule4 = np.fmin(x[1], y[0])
-output_sedang = np.fmin(rule4, kecepatan_sedang)
-
-# Rule 5: IF suhu hangat AND kelembapan normal THEN kecepatan sedang
-rule5 = np.fmin(x[1], y[1])
-output_sedang = np.fmin(rule5, kecepatan_sedang)
-
-# Rule 6: IF suhu hangat AND kelembapan basah THEN kecepatan cepat
-rule6 = np.fmin(x[1], y[2])
-output_cepat = np.fmin(rule6, kecepatan_cepat)
-
-# Rule 7: IF suhu panas AND kelembapan kering THEN kecepatan cepat
-rule7 = np.fmin(x[2], y[0])
-output_cepat = np.fmin(rule7, kecepatan_cepat)
-
-# Rule 8: IF suhu panas AND kelembapan normal THEN kecepatan cepat
-rule8 = np.fmin(x[2], y[1])
-output_cepat = np.fmin(rule8, kecepatan_cepat)
-
-# Rule 9: IF suhu panas AND kelembapan normal THEN kecepatan cepat
-rule9 = np.fmin(x[2], y[2])
-output_cepat = np.fmin(rule9, kecepatan_cepat)
-
-#dataset
+# Dataset
 dataset = [
     [25.6, 96.3],
     [23, 93.6],
@@ -107,29 +18,59 @@ dataset = [
     [29.7, 79.1]
 ]
 
-# Menggabungkan aturan-aturan dengan operasi maksimum
-output_combined = np.maximum(output_cepat, output_lambat)
-mid_value = fuzz.centroid(kecepatan, output_combined)
-print("Nilai Tengah Kecepatan Kipas:", round(mid_value, 3))
+# Input variables
+suhu = ctrl.Antecedent(np.arange(20, 41, 1), 'suhu')
+kelembaban = ctrl.Antecedent(np.arange(0, 101, 1), 'kelembaban')
 
-if mid_value < 62:
-    print("Kondisi: Lambat")
-elif mid_value >= 62 and mid_value <= 124:
-    print("Kondisi: Sedang")
-else:
-    print("Kondisi: Cepat")
+# Output variable
+kecepatan_kipas = ctrl.Consequent(np.arange(0, 186, 1), 'kecepatan_kipas')
 
-# Mengatur plot dan kurva
-plt.figure()
+# Fuzzy membership functions
+suhu['dingin'] = fuzz.trapmf(suhu.universe, [20, 20, 25, 30])
+suhu['hangat'] = fuzz.trimf(suhu.universe, [25, 30, 35])
+suhu['panas'] = fuzz.trapmf(suhu.universe, [30, 35, 40, 40])
 
-# Menampilkan grafik output kecepatan kipas
-plt.figure()
-plt.plot(kecepatan, kecepatan_lambat, 'r', label='Lambat')
-plt.plot(kecepatan, kecepatan_sedang, 'g', label='Sedang')
-plt.plot(kecepatan, kecepatan_cepat, 'b', label='Cepat')
+kelembaban['kering'] = fuzz.trapmf(kelembaban.universe, [0, 0, 25, 50])
+kelembaban['normal'] = fuzz.trimf(kelembaban.universe, [25, 50, 75])
+kelembaban['basah'] = fuzz.trapmf(kelembaban.universe, [50, 75, 100, 100])
 
-plt.plot(mid_value, 0.5, 'ko', label='Output')
-plt.annotate(f"z = {round(mid_value, 3)}", (mid_value, 0.5), textcoords="offset points", xytext=(0, 10), ha='center')
+kecepatan_kipas['lambat'] = fuzz.trapmf(kecepatan_kipas.universe, [0, 0, 62, 124])
+kecepatan_kipas['sedang'] = fuzz.trimf(kecepatan_kipas.universe, [62, 124, 185])
+kecepatan_kipas['cepat'] = fuzz.trapmf(kecepatan_kipas.universe, [124, 185, 185, 185])
 
-plt.legend()
-plt.show()
+# Rules
+rule1 = ctrl.Rule(suhu['dingin'] & kelembaban['kering'], kecepatan_kipas['lambat'])
+rule2 = ctrl.Rule(suhu['dingin'] & kelembaban['normal'], kecepatan_kipas['lambat'])
+rule3 = ctrl.Rule(suhu['dingin'] & kelembaban['basah'], kecepatan_kipas['lambat'])
+rule4 = ctrl.Rule(suhu['hangat'] & kelembaban['kering'], kecepatan_kipas['sedang'])
+rule5 = ctrl.Rule(suhu['hangat'] & kelembaban['normal'], kecepatan_kipas['sedang'])
+rule6 = ctrl.Rule(suhu['hangat'] & kelembaban['basah'], kecepatan_kipas['cepat'])
+rule7 = ctrl.Rule(suhu['panas'] & kelembaban['kering'], kecepatan_kipas['sedang'])
+rule8 = ctrl.Rule(suhu['panas'] & kelembaban['normal'], kecepatan_kipas['cepat'])
+rule9 = ctrl.Rule(suhu['panas'] & kelembaban['basah'], kecepatan_kipas['cepat'])
+
+
+# Control system
+pengendali_kipas = ctrl.ControlSystem([rule1, rule2, rule3, rule4, rule5, rule6, rule7, rule8, rule9])
+pengendali = ctrl.ControlSystemSimulation(pengendali_kipas)
+
+# Process dataset
+kecepatan = []
+for data in dataset:
+    suhu_input, kelembaban_input = data
+    pengendali.input['suhu'] = suhu_input
+    pengendali.input['kelembaban'] = kelembaban_input
+
+    # Start the simulation
+    pengendali.compute()
+
+    # Get the resulting fan speed
+    kecepatan.append(pengendali.output['kecepatan_kipas'])
+
+# Calculate accuracy
+target_kecepatan = [55, 55, 55, 55, 161.75, 129.77, 165.07, 165.06, 14.76, 12.5, 102.92, 164.56]
+akurasi = 100 - (np.mean(np.abs(np.subtract(target_kecepatan, kecepatan))) / np.mean(target_kecepatan) * 100)
+
+print("Hasil kecepatan kipas:")
+print(kecepatan)
+print("Akurasi: {}%".format(akurasi))
